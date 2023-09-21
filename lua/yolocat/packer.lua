@@ -28,6 +28,7 @@ return require('packer').startup(function(use)
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',
+		branch = 'v2.x',
 		requires = {
 			{'neovim/nvim-lspconfig'},
 			{'williamboman/mason.nvim'},
