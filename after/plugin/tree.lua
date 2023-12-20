@@ -22,8 +22,10 @@ nvim_tree.setup {
 		}
 	},
 	view = {
+		number = true,
 		relativenumber = true,
 		width = width,
+		cursorline = false,
 		float = {
 			enable = true,
 			open_win_config = {
@@ -36,6 +38,7 @@ nvim_tree.setup {
 		}
 	},
 	filters = {
-		dotfiles = true
+		dotfiles = false,
+		custom = { '.*\\.asmdef$', '.*\\.meta$', '^\\.git$', '^\\.DS_Store$' }
 	}
 }

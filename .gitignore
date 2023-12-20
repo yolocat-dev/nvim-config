@@ -1,7 +1,7 @@
 # yolocat's neovim configs
 
 # Compiled by Packer
-/plugin
+/plugin/packer_compiled.lua
 
 # Linux
 .fuse_hidden*

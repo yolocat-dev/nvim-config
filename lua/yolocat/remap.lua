@@ -27,3 +27,10 @@ end)
 
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+local opts = { noremap = true, silent = true }
+vim.api.nvim_set_keymap("n", "<Up>", "<Nop>", opts)
+vim.api.nvim_set_keymap("n", "<Down>", "<Nop>", opts)
+vim.api.nvim_set_keymap("n", "<Left>", "<Nop>", opts)
+vim.api.nvim_set_keymap("n", "<Right>", "<Nop>", opts)
+

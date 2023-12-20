@@ -9,6 +9,21 @@ lsp.ensure_installed({
 })
 
 local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
+local cmp_format = require('lsp-zero').cmp_format()
+
+cmp.setup({
+	sources = {
+		{name = 'copilot'},
+		{name = 'nvim_lsp'},
+		{name = 'path'},
+		{name = 'luasnip'},
+		{name = 'nvim_lua'},
+		{name = 'buffer'},
+	},
+	formatting = cmp_format
+})
+
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
 	['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
@@ -38,6 +53,7 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set('n', '<leader>rr', function() vim.lsp.buf.references() end, opts)
 	vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end, opts)
 	vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+	vim.keymap.set('n', '<leader>fd', function() vim.lsp.buf.format() end, opts)
 end)
 
 lsp.setup()

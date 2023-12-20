@@ -11,9 +11,13 @@ return require('packer').startup(function(use)
 
 	use {
 		'rose-pine/neovim',
-		as = 'rose-pine',
+		as = 'rose-pine'
+	}
+
+	use {
+		'neanias/everforest-nvim',
 		config = function()
-			vim.cmd('colorscheme rose-pine')
+			require('everforest').setup({ background = 'hard' })
 		end
 	}
 
@@ -25,6 +29,15 @@ return require('packer').startup(function(use)
 	use('mbbill/undotree')
 
 	use('tpope/vim-fugitive')
+
+	use('zbirenbaum/copilot.lua')
+	use {
+		'zbirenbaum/copilot-cmp',
+		after = { "copilot.lua" },
+		config = function ()
+			require("copilot_cmp").setup()
+		end
+	}
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',
@@ -57,4 +70,18 @@ return require('packer').startup(function(use)
 	use('windwp/nvim-autopairs')
 
 	use('lewis6991/gitsigns.nvim')
+
+	use {
+		'nvim-lualine/lualine.nvim',
+		after = {'rose-pine', 'everforest-nvim'}
+	}
+
+	use {
+        'andrewferrier/wrapping.nvim',
+        config = function()
+            require('wrapping').setup()
+        end,
+    }
+
+	use 'christoomey/vim-tmux-navigator'
 end)
