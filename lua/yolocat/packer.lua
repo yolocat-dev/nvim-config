@@ -94,4 +94,12 @@ return require('packer').startup(function(use)
 	}
 
 	use 'christoomey/vim-tmux-navigator'
+
+	use {
+		'm4xshen/hardtime.nvim',
+		requires = {
+			{ 'MunifTanjim/nui.nvim' },
+			{ 'nvim-lua/plenary.nvim' },
+		}
+	}
 end)
