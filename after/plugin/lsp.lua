@@ -5,7 +5,13 @@ lsp.preset('recommended')
 lsp.ensure_installed({
 	'tsserver',
 	'eslint',
-	'rust_analyzer'
+	'rust_analyzer',
+	'gopls',
+	'lua_ls',
+	'clangd',
+	'asm_lsp',
+	'tailwindcss',
+	'vimls'
 })
 
 local cmp = require('cmp')
@@ -21,7 +27,7 @@ cmp.setup({
 		{name = 'nvim_lua'},
 		{name = 'buffer'},
 	},
-	formatting = cmp_format
+	formatting = cmp_format,
 })
 
 local cmp_select = {behavior = cmp.SelectBehavior.Select}

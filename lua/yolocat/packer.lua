@@ -6,7 +6,7 @@ return require('packer').startup(function(use)
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.3',
 		-- or                            , branch = '0.1.x',
-		requires = { {'nvim-lua/plenary.nvim'} }
+		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
 
 	use {
@@ -26,6 +26,16 @@ return require('packer').startup(function(use)
 
 	use('theprimeagen/harpoon')
 
+	use {
+		"klen/nvim-config-local",
+		config = function()
+			require('config-local').setup {
+				config_files = { ".nvim.lua" },
+				silent = true
+			}
+		end
+	}
+
 	use('mbbill/undotree')
 
 	use('tpope/vim-fugitive')
@@ -34,7 +44,7 @@ return require('packer').startup(function(use)
 	use {
 		'zbirenbaum/copilot-cmp',
 		after = { "copilot.lua" },
-		config = function ()
+		config = function()
 			require("copilot_cmp").setup()
 		end
 	}
@@ -43,19 +53,19 @@ return require('packer').startup(function(use)
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v2.x',
 		requires = {
-			{'neovim/nvim-lspconfig'},
-			{'williamboman/mason.nvim'},
-			{'williamboman/mason-lspconfig.nvim'},
+			{ 'neovim/nvim-lspconfig' },
+			{ 'williamboman/mason.nvim' },
+			{ 'williamboman/mason-lspconfig.nvim' },
 
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-buffer'},
-			{'hrsh7th/cmp-path'},
-			{'saadparwaiz1/cmp_luasnip'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'hrsh7th/cmp-nvim-lua'},
+			{ 'hrsh7th/nvim-cmp' },
+			{ 'hrsh7th/cmp-buffer' },
+			{ 'hrsh7th/cmp-path' },
+			{ 'saadparwaiz1/cmp_luasnip' },
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'hrsh7th/cmp-nvim-lua' },
 
-			{'L3MON4D3/LuaSnip'},
-			{'rafamadriz/friendly-snippets'},
+			{ 'L3MON4D3/LuaSnip' },
+			{ 'rafamadriz/friendly-snippets' },
 		}
 	}
 
@@ -73,15 +83,15 @@ return require('packer').startup(function(use)
 
 	use {
 		'nvim-lualine/lualine.nvim',
-		after = {'rose-pine', 'everforest-nvim'}
+		after = { 'rose-pine', 'everforest-nvim' }
 	}
 
 	use {
-        'andrewferrier/wrapping.nvim',
-        config = function()
-            require('wrapping').setup()
-        end,
-    }
+		'andrewferrier/wrapping.nvim',
+		config = function()
+			require('wrapping').setup()
+		end,
+	}
 
 	use 'christoomey/vim-tmux-navigator'
 end)
