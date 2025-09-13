@@ -4,7 +4,10 @@ vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "<leader>gd", "<C-]>", { silent = true })
+vim.keymap.set("n", "<leader>gd", ":Telescope lsp_definitions<CR>")
+vim.keymap.set("n", "gd", ":Telescope lsp_definitions<CR>")
+vim.keymap.set("n", "<leader>gr", ":Telescope lsp_references<CR>")
+vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>")
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")

@@ -1,3 +1,5 @@
+require("mason").setup()
+
 local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
@@ -17,6 +19,12 @@ local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 local cmp_format = require('lsp-zero').cmp_format()
 
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+
+lsp.set_preferences({
+	sign_icons = { }
+})
+
 cmp.setup({
 	sources = {
 		{name = 'copilot'},
@@ -27,23 +35,19 @@ cmp.setup({
 		{name = 'buffer'},
 	},
 	formatting = cmp_format,
+	mapping = cmp.mapping.preset.insert({
+		['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+		['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
+		['<Enter>'] = cmp.mapping.confirm({ select = false }),
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<Tab>'] = function(fallback) fallback() end,
+		['<S-Tab>'] = function(fallback) fallback() end,
+	})
 })
 
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-	['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
-	['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
-	['<Enter>'] = cmp.mapping.confirm({ select = true }),
-	['<C-Space>'] = cmp.mapping.complete(),
-})
-
-lsp.set_preferences({
-	sign_icons = { }
-})
-
-lsp.setup_nvim_cmp({
-	mapping = cmp_mappings
-})
+--lsp.setup_nvim_cmp({
+--	mapping = cmp_mappings
+--})
 
 lsp.on_attach(function(client, bufnr)
 	local opts = {buffer = bufnr, remap = false}
@@ -62,3 +66,5 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
+
+require'yolocat.lsp'.ConfigureDefaults();
